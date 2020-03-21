@@ -112,6 +112,20 @@ this.asyncFunc().then((value) => {
 ```
 Try to avoid using arrow functions in object methods, or as methods in classes, as they allow fo unintuitive code, inhibiting testing and creates problems if you attempt to subclass/use this object as a prototype. [Read this article for better context](https://medium.com/@charpeni/arrow-functions-in-class-properties-might-not-be-as-great-as-we-think-3b3551c440b1)
 
+### Functional Programming
+While the world is crazy about object oriented programming (oop), we tend to forget why it's necessary and when to use it. So much so that we forget about good old functional programming. If the application is more concerned with flow of a task, than with creating real word objects, please stick with functional programming. OOP is like bringing a fighter jet to a gun fight. 
+
+Use a parent wrapper (object of functions) to classify your functions. Object name should be UpperCase PascalCase, while children functions are named with lowercas pascalCase. make sure your functions return a value or change the state of an input. A file with an object of functions must reflect its parent function, i.e name of file should reflect object name.
+
+```javascript
+const BicycleFunction = {
+  async bicycleTyre(foo) {
+    // some code
+    return bar;
+  }
+}
+```
+
 ### Classes
 Use uppercase CamelCase when naming all classes in the code base. This helps differentiate them from other functions and variables. Class methods should be async by defaut. Only when you're certain the logic does not use any await statements can you safely omit the async.
 
@@ -137,16 +151,82 @@ export default class BicycleParts {
 
 ## Architecture
 ### Imports
+As explained earlier, all filders must have an `index.js` file for exporting all shared functions and classes. This allows for easier import tracking via destructuring. let's look at an example. 
 
-### Exports / Indexing
+let's say we have a controller folder with several controller logic files, all exported out for use around the program
+```
+controllers
+  - firstController.js
+  - secondController.js
+  - ThirdController.js
+  - index.js
+```
+In our `index.js` file, we would have this logic
+```javascript
+import FirstController from './firstController';
+import SecondController from './secondController';
+import ThirdController from './thirdController';
+
+export {
+  FirstController,
+  SecondController,
+  ThirdController,
+};
+```
+This allows for an import gateway all around the application. So you can simply fetch the logic you want by calling just the controller folder via destructuring.
+
+```javascript
+// in any file
+import { FirstController, SecondController } from './controllers'
+```
 
 ### Error Handling
+For every method in a class, or async function in an object, errors need to be handled. This allows for error tracking and easy debugging. Ideally, when working with backends, error functions are created to return errors with their associated error codes. For the sake of a simple example, a mock function called `errorBot()` will be used to represent the error catcher. Always use a `try/catch` statement in all functions and methods.
 
-### MVC
+Let's take our bicycle example a bit further to handle an error when the wrong size is added as a parameter. 
+
+```javascript
+const BicycleFunction = {
+  async bicycleTyre(size) {
+    try {
+      if (size !=== 'expectedSize') return errorBot('This tyre size is unexpected!');
+      return size;
+    } catch (error) {
+      return errorBot('This is the default error message for unspecified system errors');
+    }
+  }
+}
+```
 
 ### Services
+Sevrvices are functions or methods that connect directly to the database, and feed data to the business logic (Controllers, middlewares). Most services repeat themselves and render the code base a bit bloated. To curb this, `generalServices` are used to abstract commonly written services. An example of this would be adding a new user in the database. Normally we would simply write a service for adding our user:
 
-### 
+```javascript
+  const addUser = (payload) => {
+    const user = model.User.create(payload);
+    return user;
+  };
+```
+Above is a basic service function for adding a user. So wherever needed in the business logic, andding a user will be done with a simple call to this `addUser()` function. However, when we want to add a new bicycle to the databae, we would have to write a separate `addBicycle()` service function. 
+
+With abstraction, the above code will be rewritten as:
+```javascript
+  const addEntity = (model, payload) => {
+    const entity = model.create(payload);
+    return user;
+  }
+```
+Now, anywhere an entity needs to be added to a database, be it a user or a bicycle, the same service funtion can be used.
+```javascript
+  // in any file
+  import { Bicycle } from './models';
+  import { addEntity } from './service';
+
+  const newBicycle = async (req) => {
+    const bicycle = await addEntity(Bicycle, payload);
+    return bicycle;
+  };
+```
 
 ## JSDoc
 ### Form
@@ -154,4 +234,7 @@ export default class BicycleParts {
 ### Types and Members
 
 ## Git
-### 
+### Commits
+### Rebasing
+### Issues
+### Pull Requests
