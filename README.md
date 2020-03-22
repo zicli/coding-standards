@@ -230,8 +230,29 @@ Now, anywhere an entity needs to be added to a database, be it a user or a bicyc
 
 ## JSDoc
 ### Form
+All functions and methods must include a jsdoc to help developers better document their code. the format of a jsdoc is typically with the following types
+- function/method type:  @async, @function, @static
+- input parameters: @param {parameter type}
+- output parameter: @returns {parameter type}
+- function label: @memberof {parent or class}
 
-### Types and Members
+Below is an example of a good JSDoc function/method documentation
+```javascript
+const BicycleFunctions = {
+  /**
+   * Function for calculating tyre
+   * @async
+   * @param {number} size - size of tyre
+   * @param {object} dimensions - tyre dimensions
+   * @returns {object} tyre - tyre caclulation output
+   * @memberof BicycleFunctions
+   */
+   async calculateTyre(size, dimensions) {
+     // some code
+     return tyre;
+   },
+};
+```
 
 ## Git
 ### Commits
