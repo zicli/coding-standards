@@ -255,6 +255,25 @@ const BicycleFunctions = {
 ```
 
 ## Git
+### Branches
+On every repository, te develop branch is our head branch. All rebasing, merging and off branching must be made with the develop branch as the head. When a new branch is created, it must follow the naming convention: `[owner]/[branch-type]/[branch-scope]`. The owner tag is the name of the branch owner. The branch types are as follows:
+
+- bg (bug) - a branch to fix a know bug
+- ft (feature) - a branch to add a feature
+- ch (chore) - a branch to performa code chore (eg. refactoring).
+
+The branch scope is simply the purpose of the branch. For example, developer donald wants to add a new feature to his bicycle applicaition to check if a bicycle needs servicing. to perform this, he will take the following steps
+
+```
+# make sure he is in the develop branch
+git checkout develop
+
+# update develop branch to ensure he is up to date in his local
+git pull origin develop 
+
+# create new branch
+git checkout -b donald/ft/bicycle-service
+```
 ### Commits
 ### Rebasing
 ### Issues
