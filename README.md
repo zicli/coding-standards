@@ -275,6 +275,82 @@ git pull origin develop
 git checkout -b donald/ft/bicycle-service
 ```
 ### Commits
+commits should be made ofter, with a brief line explaining the code function being commited. If a single functionality has been added to the code, commit should be a simple as:
+
+```
+:emoji: added functionality to code
+```
 ### Rebasing
-### Issues
+Rebasing is the trickiest aspect of the git experience. Rebasing is needed when the head branch with which you've branched off of has gone ahead of your current branch. A great video on git rebasing can be found below
+- [A Better Git Workflow with Rebase (Youtube)](https://www.youtube.com/watch?v=f1wnYdLEpgI)
+A git rebase should not be confused with a git merge
+- [Git MERGE vs REBASE (Youtube)](https://www.youtube.com/watch?v=CRlGDDprdOQ)
+
+Article on Rebasing
+- [The beginner’s guide to rebasing your PR – Rob Allen’s DevNotes](https://akrabat.com/the-beginners-guide-to-rebasing-your-pr/)
+
+workflow
+you pull an up to date develop head branch
+```
+git pull develop
+```
+
+you create a branch out of develop
+```
+git checkout -b donald/ft/branch
+```
+
+you work on your branch. the develop branch changes and it is not ahead of your branch. this can occur if someone else merges into develop with new code. if you try to merge, a conflict error will occur, so you need to rebase your branch with develop.
+
+make sure you're on your branch
+```
+git checkout donald/ft/branch
+```
+
+rebase with develop
+```
+git rebase develop
+```
+vs code will show you all merge conflicts, you are to address all conflicts. The merge conflicts will show you the new code that has been added to develop, as well as your incoming code. Please be careful at this juction.
+
+**Merge conflicts tend to occur when you alter lines of code from original develop**
+**When working on your branch, try to limit changing code, only add your new code logic to existing code**
+
+once merge conflicts are fixed, you can commit your code
+```
+git commit
+```
+
+checkout to develop
+```
+git checkout develop
+```
+
+rebase again
+```
+git rebase donald/ft/branch
+```
+
+ **WATCH THE VIDEOS AND READ THE ARTICLES FOR BETTER UNDERSTANDING**
+
 ### Pull Requests
+
+Template:
+
+```
+## What it does
+This PR does this thing 
+
+## How to test it
+- clone the repo
+- add your environment variables to .env
+- if using docker, run `docker-compose up`
+- run `npm test` to run tests
+
+## Postman Test
+- before testing, make sure your .env variables are in order
+- open postman, add a `get` route to `apiURL`
+
+## What's next
+- my next task(s)
+```
