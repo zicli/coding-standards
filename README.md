@@ -331,7 +331,7 @@ rebase again
 git rebase donald/ft/branch
 ```
 
- **WATCH THE VIDEOS AND READ THE ARTICLES FOR BETTER UNDERSTANDING**
+ **Watch the videos and read the articles for better understanding of git rebasing**
 
 ### Pull Requests
 
