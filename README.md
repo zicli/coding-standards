@@ -4,14 +4,14 @@
 ## Philosophy
 Our aspirations to become a multi platform, multi production company relies on how seamlessly these sectors integrate with one another. To make this seamless integration possible, coding standards need to be enforced. Here are a few great reason for having these standards.
 
-1. Readability. Reading code becomes much easier. You can discern patterns easily without having to read each line, which helps in debugging, and speeds ip the process of reading, and synthesising new code.
+1. Readability. Reading code becomes much easier. You can discern patterns easily without having to read each line, which helps in debugging, and speeds up the process of reading, and synthesising new code.
 2. Speed. Code standards help speed up the code writing process. Simple rules lead to simple execution, which helps tackle complex tasks. It also frees your mind when worrying about the look of the code.
 3. Assist. With code conventions, especially ones refined on a regular basis, errors made by developers are corrected, which helps in anticipating new errors, and guiding new developers down the right path.
 
 ## Recommendations
-If you’re reading this document, there’s a high chance you’re a part of the Zicli Software team. This means you should’ve gone through enough testing to make certain you’re familiar with the basics needed to do your job to the best of your abilities. If you’re just a simple internet traveler, welcome, and I hope these recommendations help you on your journey. 
+If you’re reading this document, there’s a high chance you’re a part of the Zicli Software team. This means you should’ve gone through enough testing to make certain you’re familiar with the basics needed to do your job to the best of your abilities. If you’re just a simple internet traveler, welcome, and I hope these recommendations help you on your journey.
 
-In any case, to make your work easier, here are some refreshers in the basics. 
+In any case, to make your work easier, here are some refreshers in the basics.
 
 - [Eloquent Javascript, Third Edition](https://eloquentjavascript.net/)
 - [Algorithms in Javascript](https://medium.com/siliconwat/algorithms-in-javascript-b0bed68f4038)
@@ -30,11 +30,11 @@ Depending on the nature of the project (Node project or React project), the root
 Most of the magic occurs in the```/src```. this is where we will focus all of the source code files used for the project.
 
 ### Naming and Hierarchy
-All folders created in the src file should be named with small letters, and should use a word that distinguishes all concurrent files / folders within it (i.e a category). It should be pluralised to hint at multiple content. 
+All folders created in the src file should be named with small letters, and should use a word that distinguishes all concurrent files / folders within it (i.e a category). It should be pluralised to hint at multiple content.
 
-All folders must contain an index.js file, which will be used to route all exports for that folder. This means all file exports in a folder must be mapped to the index.js file, allowing for destructured imports directly from the folder throughout the code base. 
+All folders must contain an index.js file, which will be used to route all exports for that folder. This means all file exports in a folder must be mapped to the index.js file, allowing for destructured imports directly from the folder throughout the code base.
 
-<img width="174" alt="Screenshot 2020-02-06 at 10 03 38" src="https://user-images.githubusercontent.com/60140805/73921752-3f3f6600-48c8-11ea-9b6f-63ad568a1064.png">
+<img width="174" alt="Screenshot 2020-02-06 at 10 03 38" src="https://user-images.githubusercontent.com/45209679/77661893-828a8c80-6f7b-11ea-9920-c8f9ba3d0fc8.PNG">
 
 
 ## Styling
@@ -42,9 +42,9 @@ We generally use the [Airbnb Javascript Style Guide (ES6)](https://github.com/ai
 
 ## Features
 ### Variable Declarations
-All variables should be declared just once at all times, and before they are used. JavaScript does not require this, but doing so makes the program easier to read and makes it easier to detect undeclared variables that may become implied. Implied global variables should never be used. Use of global variables should be minimized. 
+All variables should be declared just once at all times, and before they are used. JavaScript does not require this, but doing so makes the program easier to read and makes it easier to detect undeclared variables that may become implied. Implied global variables should never be used. Use of global variables should be minimized.
 
-Type ```const``` are preferred to ```let``` at all times, i.e. ```let``` should only be used when you’re certain a variable will be reassigned. 
+Type ```const``` are preferred to ```let``` at all times, i.e. ```let``` should only be used when you’re certain a variable will be reassigned.
 
 Names should be formed from the 26 upper and lower case letters ```(A .. Z, a .. z)```, and thethe 10 digits ```(0 .. 9)```. Avoid use of international characters because they may not read well or be understood everywhere. Do not use ```$``` dollar sign or ```\``` backslash or ```_``` underbar in names.
 
@@ -79,7 +79,7 @@ Buffer variables should be explicitly named and point to its function (the value
   const userNameBuffer;
 ```
 ### Arrays
-Name them for what they hold. An array of messages should be called ```messages```. An array of file names should be called ```fileNames```. Retain camelCase naming for arrays. Ensure all array names are pluralised. Arrays can be declared on a single line if they are short 
+Name them for what they hold. An array of messages should be called ```messages```. An array of file names should be called ```fileNames```. Retain camelCase naming for arrays. Ensure all array names are pluralised. Arrays can be declared on a single line if they are short
 
 ### Objects
 Object declarations can be made on a single line if they are short. When an object declaration is too long to fit on one line, there must be one property per line. Property names only need to be quoted if they are reserved words or contain special characters
@@ -92,7 +92,7 @@ const user = {
 ```
 
 ### Functions
-When iterating through an array for use in transformation, mapping and looping methods, make use of Arrow functions. 
+When iterating through an array for use in transformation, mapping and looping methods, make use of Arrow functions.
 
 ```javascript
 this.foo.forEach(bar => {
@@ -113,9 +113,9 @@ this.asyncFunc().then((value) => {
 Try to avoid using arrow functions in object methods, or as methods in classes, as they allow fo unintuitive code, inhibiting testing and creates problems if you attempt to subclass/use this object as a prototype. [Read this article for better context](https://medium.com/@charpeni/arrow-functions-in-class-properties-might-not-be-as-great-as-we-think-3b3551c440b1)
 
 ### Functional Programming
-While the world is crazy about object oriented programming (oop), we tend to forget why it's necessary and when to use it. So much so that we forget about good old functional programming. If the application is more concerned with flow of a task, than with creating real word objects, please stick with functional programming. OOP is like bringing a fighter jet to a gun fight. 
+While the world is crazy about object oriented programming (oop), we tend to forget why it's necessary and when to use it. So much so that we forget about good old functional programming. If the application is more concerned with flow of a task, than with creating real word objects, please stick with functional programming. OOP is like bringing a fighter jet to a gun fight.
 
-Use a parent wrapper (object of functions) to classify your functions. Object name should be UpperCase PascalCase, while children functions are named with lowercas pascalCase. make sure your functions return a value or change the state of an input. A file with an object of functions must reflect its parent function, i.e name of file should reflect object name.
+Use a parent wrapper (object of functions) to classify your functions. Object name should be UpperCase PascalCase, while children functions are named with lowercase pascalCase. make sure your functions return a value or change the state of an input. A file with an object of functions must reflect its parent function, i.e name of file should reflect object name.
 
 ```javascript
 const BicycleFunction = {
@@ -151,7 +151,7 @@ export default class BicycleParts {
 
 ## Architecture
 ### Imports
-As explained earlier, all filders must have an `index.js` file for exporting all shared functions and classes. This allows for easier import tracking via destructuring. let's look at an example. 
+As explained earlier, all filders must have an `index.js` file for exporting all shared functions and classes. This allows for easier import tracking via destructuring. let's look at an example.
 
 let's say we have a controller folder with several controller logic files, all exported out for use around the program
 ```
@@ -183,7 +183,7 @@ import { FirstController, SecondController } from './controllers'
 ### Error Handling
 For every method in a class, or async function in an object, errors need to be handled. This allows for error tracking and easy debugging. Ideally, when working with backends, error functions are created to return errors with their associated error codes. For the sake of a simple example, a mock function called `errorBot()` will be used to represent the error catcher. Always use a `try/catch` statement in all functions and methods.
 
-Let's take our bicycle example a bit further to handle an error when the wrong size is added as a parameter. 
+Let's take our bicycle example a bit further to handle an error when the wrong size is added as a parameter.
 
 ```javascript
 const BicycleFunction = {
@@ -207,7 +207,7 @@ Sevrvices are functions or methods that connect directly to the database, and fe
     return user;
   };
 ```
-Above is a basic service function for adding a user. So wherever needed in the business logic, andding a user will be done with a simple call to this `addUser()` function. However, when we want to add a new bicycle to the databae, we would have to write a separate `addBicycle()` service function. 
+Above is a basic service function for adding a user. So wherever needed in the business logic, andding a user will be done with a simple call to this `addUser()` function. However, when we want to add a new bicycle to the databae, we would have to write a separate `addBicycle()` service function.
 
 With abstraction, the above code will be rewritten as:
 ```javascript
@@ -260,7 +260,7 @@ On every repository, te develop branch is our head branch. All rebasing, merging
 
 - bg (bug) - a branch to fix a know bug
 - ft (feature) - a branch to add a feature
-- ch (chore) - a branch to performa code chore (eg. refactoring).
+- ch (chore) - a branch to perform a code chore (eg. refactoring).
 
 The branch scope is simply the purpose of the branch. For example, developer donald wants to add a new feature to his bicycle applicaition to check if a bicycle needs servicing. to perform this, he will take the following steps
 
@@ -269,7 +269,7 @@ The branch scope is simply the purpose of the branch. For example, developer don
 git checkout develop
 
 # update develop branch to ensure he is up to date in his local
-git pull origin develop 
+git pull origin develop
 
 # create new branch
 git checkout -b donald/ft/bicycle-service
@@ -339,7 +339,7 @@ Template:
 
 ```
 ## What it does
-This PR does this thing 
+This PR does this thing
 
 ## How to test it
 - clone the repo
